@@ -37,7 +37,7 @@ Your board might look different but the IR receiver usually looks like the one s
 
 ![](rsc/boar.jpg)
 
-My cassette requires a `WF-60A1` in order to use the `SLWF-01Pro` Wi-Fi module. Originally I tried soldering directly to the IR receiver on the `WF-60A1`, but that did not work.
+My cassette requires a `WF-60A1` in order to use the `SLWF-01Pro` Wi-Fi module. Originally I tried soldering directly to the [IR receiver](https://www.vishay.com/docs/82481/tssp77p38.pdf) on the `WF-60A1`, but that did not work.
 
 ![](rsc/60.jpg)
 
