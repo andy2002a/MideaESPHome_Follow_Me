@@ -64,7 +64,7 @@ sensor:
       - debounce: 1s
     on_value:
       midea_ac.follow_me:
-        temperature: !lambda "return ((x - 32) * (5.0/9.0)) ;"  # convert F to C
+        temperature: !lambda "return ((x - 32.0) * (5.0/9.0)) ;"  # convert F to C
         #temperature: !lambda "return x;"                       # use this instead if your temp sensor is in C
         beeper: true                                            # beep every time there is an update
 ```
@@ -72,7 +72,7 @@ sensor:
 
 Things to note: 
  - During testing set the `heartbeat` to 1 minute, and `beeper: true`. This will quickly give you feedback.
- - My sensor returns the temperature in Fahrenheit, but the unit expects Celsius. As a result I need to convert using `((x - 32) * (5.0/9.0))`. 
+ - My sensor returns the temperature in Fahrenheit, but the unit expects Celsius. As a result I need to convert using `((x - 32.0) * (5.0/9.0))`. 
  
 ## How do I know it worked?
 
@@ -99,7 +99,7 @@ sensor:
       - debounce: 1s
     on_value:
       midea_ac.follow_me:
-        temperature: !lambda "return ((x - 32) * (5.0/9.0)) ;"  # convert F to C
+        temperature: !lambda "return ((x - 32.0) * (5.0/9.0)) ;"  # convert F to C
         beeper: false
 ```
 
