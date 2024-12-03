@@ -108,5 +108,5 @@ sensor:
 - Turn the breaker off/on to restart everything.
 - Make sure that you cleaned the surface of the PCB correctly in order to get good solder contact.
 - Make sure you soldered to the correct leg of the IR receiver.
-- Makes sure all your connections to the unit are good.
+- Make sure all your connections to the unit are good.
 - If using thin wire make sure it did not get cut while working with it.
