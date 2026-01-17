@@ -64,15 +64,17 @@ sensor:
       - debounce: 1s
     on_value:
       midea_ac.follow_me:
-        temperature: !lambda "return ((x - 32.0) * (5.0/9.0)) ;"  # convert F to C
-        #temperature: !lambda "return x;"                       # use this instead if your temp sensor is in C
+        
+        # temperature: !lambda "return ((x - 32.0) * (5.0/9.0)) ;"  # convert F to C # no longer necessary 
+        temperature: !lambda "return x;"
+        use_fahrenheit: true                                    # set to false for C
         beeper: true                                            # beep every time there is an update
 ```
 
 
 Things to note: 
  - During testing set the `heartbeat` to 1 minute, and `beeper: true`. This will quickly give you feedback.
- - My sensor returns the temperature in Fahrenheit, but the unit expects Celsius. As a result I need to convert using `((x - 32.0) * (5.0/9.0))`. 
+ - My sensor returns the temperature in Fahrenheit, but the unit expects Celsius. ~~As a result I need to convert using `((x - 32.0) * (5.0/9.0))`.~~ Use `use_fahrenheit: true`.
  
 ## How do I know it worked?
 
@@ -89,17 +91,20 @@ Below is the final config once I confirmed everything was working:
 ```yaml
 sensor:
   - platform: homeassistant
-    entity_id: sensor.aqara_bedroom_temperature                 #external temp sensor in HA - F unit
+    entity_id: sensor.aqara_bedroom_temperature                 #external temp sensor in HA - comes in as F unit for me
     id: bedroom_follow_me_sensor
     internal: false                                             # set to false so that you can see it in HA
     name: "bedroom_follow_me_sensor"
+    unit_of_measurement: "°F"                                   # Change to C if required
     filters:
       - throttle: 10s
       - heartbeat: 2min                                         # send updates every 2 min
       - debounce: 1s
     on_value:
       midea_ac.follow_me:
-        temperature: !lambda "return ((x - 32.0) * (5.0/9.0)) ;"  # convert F to C
+        # temperature: !lambda "return ((x - 32.0) * (5.0/9.0)) ;"  # convert F to C # no longer necessary 
+        temperature: !lambda "return x ;"                       # send degF value from x
+        use_fahrenheit: true                                    # set to false for C
         beeper: false
 ```
 
